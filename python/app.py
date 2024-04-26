@@ -2,15 +2,14 @@ from fastapi import FastAPI;
 from typing import Union;
 from PyPDF2 import PdfReader;
 import requests;
-from datetime import datetime
+from datetime import datetime;
+import os;
 
 app = FastAPI();
 
 @app.get("/price")
 
 def price():
-    
-    
     return extrac();
 
 
@@ -19,6 +18,8 @@ def price():
     
 def extrac():
 
+    dowload_save();
+    
     data = open(r"Boletin.pdf","rb")
     reader = PdfReader(data);
     page = reader.pages[1];
@@ -32,22 +33,30 @@ def extrac():
 
 
 
-    file = open("h.txt","r+")
-
+    file = open("python\h.txt","r+")
     file.write(archivo);
     file.close();
 
     value = False;
-    with open("h.txt", "r+") as linea:
+    cebolla = []
+    frijol = []
+    tomate = []
+    
+    with open("python\h.txt", "r+") as linea:
         for a in linea:
             arrayWords = a.split();
-            print(arrayWords);
+           
             if(value):
                 if("CABEZONA" == arrayWords[1]):
+                    print("7////////////////"+arrayWords[1])
                     if("ROJA"  == arrayWords[2]):
                         cebolla = arrayWords[0]+" "+arrayWords[1]+" "+arrayWords[2]+" "+arrayWords[8];
                         cebolla = cebolla.split("$");
                         cebolla[1] = float(cebolla[1]);
+                        print("7////////////////"+arrayWords[1])
+                        print(cebolla)
+                       
+                        
                     
             if("CEBOLLA" == arrayWords[0]):
                 value = True;
@@ -63,7 +72,7 @@ def extrac():
                     tomate = tomate.split("$");
                     tomate[1] = float(tomate[1]); 
 
-    return {{"name" : cebolla[0],
+    return [{"name" : cebolla[0],
              "price": cebolla[1],
              "location": "Bogota"
              },
@@ -76,16 +85,48 @@ def extrac():
              "location": "Bogota"
              },
         
-            }
+            ]
 
 def date():
     now = datetime.now();
     day = str(now.day);
     month = now.month;
+    year = str(now.year);
     
     arrayMonths = ("enero","febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre")
     
-    month = arrayMonths[month-1];
+    monthWord = arrayMonths[month-1];
+    month = str(month);
     
-    return day, month;
+    return year,month, monthWord, day;
     
+def dowload_save():
+    
+    year = date()[0];
+    month = date()[1];
+    monthWord = date()[2];
+    day = date()[3]; 
+    
+    print(date())
+    archivo_delet = "python\Boletin.pdf";
+   # Construye la URL concatenando las partes
+    url_base = "https://boletin.precioscorabastos.com.co/wp-content/uploads/"
+    url_date = f"{year}/0{month}/Boletin-25{monthWord}{year}.pdf"
+
+    # La URL completa sería
+    url = url_base + url_date
+
+    res = requests.get(url);
+    print(res)
+    
+    if os.path.exists(archivo_delet):
+        os.remove(archivo_delet)
+    
+    if res.status_code == 200:
+        with open("Boletin.pdf",'wb') as ar:
+                ar.write(res.content)
+                print("boletin guardado")
+                
+dowload_save()
+
+
