@@ -1,21 +1,33 @@
 from fastapi import FastAPI;
+from fastapi.middleware.cors import CORSMiddleware;
 from typing import Union;
 from PyPDF2 import PdfReader;
 import requests;
 from datetime import datetime;
 import os;
 
+
 app = FastAPI();
+
+origins =[
+    "http://localhost:4321",
+    
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/price")
 
-def price():
+async def price():
     return extrac();
 
 
-
-
-    
 def extrac():
 
     dowload_save();
@@ -25,11 +37,7 @@ def extrac():
     page = reader.pages[1];
 
 
-
     archivo = page.extract_text()
-
-
-
 
 
 
@@ -38,9 +46,7 @@ def extrac():
     file.close();
 
     value = False;
-    cebolla = []
-    frijol = []
-    tomate = []
+
     
     with open("python\h.txt", "r+") as linea:
         for a in linea:
@@ -84,7 +90,6 @@ def extrac():
              "price": tomate[1],
              "location": "Bogota"
              },
-        
             ]
 
 def date():
@@ -109,11 +114,10 @@ def dowload_save():
     
     print(date())
     archivo_delet = "python\Boletin.pdf";
-   # Construye la URL concatenando las partes
     url_base = "https://boletin.precioscorabastos.com.co/wp-content/uploads/"
-    url_date = f"{year}/0{month}/Boletin-25{monthWord}{year}.pdf"
+    url_date = f"{year}/0{month}/Boletin-{day}{monthWord}{year}.pdf"
 
-    # La URL completa sería
+
     url = url_base + url_date
 
     res = requests.get(url);
