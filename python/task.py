@@ -1,7 +1,7 @@
 import requests;
 import os;
 from datetime import datetime;
-
+from email_send import alert_email;
 
 def date():
     
@@ -21,13 +21,9 @@ def date():
     return year,month, monthWord, day, weekday;
 
 
-
-
-
-
 def dowload_save():
     
-    print("hola")
+    print("se ejecuto el la descarga y guardado")
     
     year = date()[0];
     month = date()[1];
@@ -52,7 +48,8 @@ def dowload_save():
         with open("Boletin.pdf",'wb') as ar:
                 ar.write(res.content)
                 print("boletin guardado")
-                
-
+    else:
+        alert_email();
+       
 
 

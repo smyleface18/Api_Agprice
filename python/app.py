@@ -57,24 +57,41 @@ def productos():
                         cebolla[1] = float(cebolla[1]);
                         print("7////////////////"+arrayWords[1])
                         print(cebolla)
-                       
-                        
+
                     
             if("CEBOLLA" == arrayWords[0]):
                 value = True;
+                
                 
             if("FRIJOL" == arrayWords[0]):
                 frijol = arrayWords[0]+" "+arrayWords[1]+" "+arrayWords[7];
                 frijol = frijol.split("$");
                 frijol[1] = float(frijol[1]);
                 
+                
+                
             if("TOMATE" == arrayWords[0]):
                 if("CHONTO" == arrayWords[1]):
                     tomate = arrayWords[0]+" "+arrayWords[1]+" "+arrayWords[7];
                     tomate = tomate.split("$");
                     tomate[1] = float(tomate[1]); 
+                    
+                    
+            if("MAZORCA" == arrayWords[0]):
+                mazorca = arrayWords[0]+" "+arrayWords[6];
+                mazorca = mazorca.split("$");
+                mazorca[1] = float(mazorca[1]);
+                
+                
+            if("PIMENTON" == arrayWords[0]):
+                pimento = arrayWords[0]+" "+arrayWords[6];
+                pimento = pimento.split("$");
+                pimento[1] = float(pimento[1]);
+                
 
-    return [{"name" : cebolla[0],
+
+    return [
+            {"name" : cebolla[0],
              "price": cebolla[1],
              "location": "Bogota"
              },
@@ -86,18 +103,29 @@ def productos():
              "price": tomate[1],
              "location": "Bogota"
              },
+            {"name" : mazorca[0],
+             "price": mazorca[1],
+             "location": "Bogota"
+             },
+            {"name" : pimento[0],
+             "price": pimento[1],
+             "location": "Bogota"
+             },
+            {"year" : date()[0],
+                      "month" : date()[1],
+                      "monthWord": date()[2],
+                      "day" : date()[3],
+                      "weekday" : date()[4]
+            }           
             ]
 
 
-    
-    
 
 def extrac():
 
     data = open(r"Boletin.pdf","rb")
     reader = PdfReader(data);
     page = reader.pages[1];
-
 
     archivo = page.extract_text()
 
