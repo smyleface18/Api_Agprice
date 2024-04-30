@@ -13,6 +13,7 @@ app = FastAPI();
 
 origins =[
     "http://localhost:4321",
+    "http://127.0.0.1:5500"
     
 ]
 
@@ -33,7 +34,7 @@ async def price():
     return productos();
 
 
-if( not(date()[4] == "Lunes" or date()[4] == "Domingo")):
+if( not(date()[4] == "Sabado" or date()[4] == "Domingo")):
     scheduler.start(); 
 
 
@@ -112,11 +113,10 @@ def productos():
              "location": "Bogota"
              },
             {"year" : date()[0],
-                      "month" : date()[1],
-                      "monthWord": date()[2],
-                      "day" : date()[3],
-                      "weekday" : date()[4]
-            }           
+              "month" : date()[1],
+              "monthWord": date()[2],
+               "day" : date()[3],
+              "weekday" : date()[4]}           
             ]
 
 
