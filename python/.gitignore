@@ -4,5 +4,5 @@
 lib/site-packages/
 _pycache_
 include
-Scripts
+Scripts/
 pyvenv.cfg
