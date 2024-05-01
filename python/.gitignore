@@ -1,7 +1,7 @@
 .env
 /venv
 .venv/
-.lib
+.lib/
 _pycache_
 include
 Scripts
