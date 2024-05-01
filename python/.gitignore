@@ -1,8 +1,8 @@
 .env
 /venv
 .venv/
-lib/site-packages/
-_pycache_
+lib/
+_pycache_/
 include
 Scripts/
 pyvenv.cfg
