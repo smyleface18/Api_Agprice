@@ -48,47 +48,47 @@ def productos():
     with open("python\h.txt", "r+") as linea:
         for a in linea:
             arrayWords = a.split();
-           
-            if(value):
-                if("CABEZONA" == arrayWords[1]):
-                    print("7////////////////"+arrayWords[1])
-                    if("ROJA"  == arrayWords[2]):
-                        cebolla = arrayWords[0]+" "+arrayWords[1]+" "+arrayWords[2]+" "+arrayWords[8];
-                        cebolla = cebolla.split("$");
-                        cebolla[1] = float(cebolla[1]);
+            if(len(arrayWords) >= 1):
+                if(value):
+                    if("CABEZONA" == arrayWords[1]):
                         print("7////////////////"+arrayWords[1])
-                        print(cebolla)
+                        if("ROJA"  == arrayWords[2]):
+                            cebolla = arrayWords[0]+" "+arrayWords[1]+" "+arrayWords[2]+" "+arrayWords[8];
+                            cebolla = cebolla.split("$");
+                            cebolla[1] = float(cebolla[1]);
+                            print("7////////////////"+arrayWords[1])
+                            print(cebolla)
 
-                    
-            if("CEBOLLA" == arrayWords[0]):
-                value = True;
-                
-                
-            if("FRIJOL" == arrayWords[0]):
-                frijol = arrayWords[0]+" "+arrayWords[1]+" "+arrayWords[7];
-                frijol = frijol.split("$");
-                frijol[1] = float(frijol[1]);
-                
-                
-                
-            if("TOMATE" == arrayWords[0]):
-                if("CHONTO" == arrayWords[1]):
-                    tomate = arrayWords[0]+" "+arrayWords[1]+" "+arrayWords[7];
-                    tomate = tomate.split("$");
-                    tomate[1] = float(tomate[1]); 
+                        
+                if("CEBOLLA" == arrayWords[0]):
+                    value = True;
                     
                     
-            if("MAZORCA" == arrayWords[0]):
-                mazorca = arrayWords[0]+" "+arrayWords[6];
-                mazorca = mazorca.split("$");
-                mazorca[1] = float(mazorca[1]);
-                
-                
-            if("PIMENTON" == arrayWords[0]):
-                pimento = arrayWords[0]+" "+arrayWords[6];
-                pimento = pimento.split("$");
-                pimento[1] = float(pimento[1]);
-                
+                if("FRIJOL" == arrayWords[0]):
+                    frijol = arrayWords[0]+" "+arrayWords[1]+" "+arrayWords[7];
+                    frijol = frijol.split("$");
+                    frijol[1] = float(frijol[1]);
+                    
+                    
+                    
+                if("TOMATE" == arrayWords[0]):
+                    if("CHONTO" == arrayWords[1]):
+                        tomate = arrayWords[0]+" "+arrayWords[1]+" "+arrayWords[7];
+                        tomate = tomate.split("$");
+                        tomate[1] = float(tomate[1]); 
+                        
+                        
+                if("MAZORCA" == arrayWords[0]):
+                    mazorca = arrayWords[0]+" "+arrayWords[6];
+                    mazorca = mazorca.split("$");
+                    mazorca[1] = float(mazorca[1]);
+                    
+                    
+                if("PIMENTON" == arrayWords[0]):
+                    pimento = arrayWords[0]+" "+arrayWords[6];
+                    pimento = pimento.split("$");
+                    pimento[1] = float(pimento[1]);
+                    
 
 
     return [

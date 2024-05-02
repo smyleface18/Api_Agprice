@@ -33,7 +33,7 @@ def dowload_save():
     print(date())
     archivo_delet = "python\Boletin.pdf";
     url_base = "https://boletin.precioscorabastos.com.co/wp-content/uploads/"
-    url_date = f"{year}/0{month}/Boletin-25{monthWord}{year}.pdf"
+    url_date = f"{year}/04/Boletin-30abril{year}.pdf"
 
 
     url = url_base + url_date
@@ -41,10 +41,10 @@ def dowload_save():
     res = requests.get(url);
     print(res)
     
-    if os.path.exists(archivo_delet):
-        os.remove(archivo_delet)
+
     
     if res.status_code == 200:
+
         with open("Boletin.pdf",'wb') as ar:
                 ar.write(res.content)
                 print("boletin guardado")
