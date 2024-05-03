@@ -33,7 +33,7 @@ def dowload_save():
     print(date())
     archivo_delet = "python\Boletin.pdf";
     url_base = "https://boletin.precioscorabastos.com.co/wp-content/uploads/"
-    url_date = f"{year}/04/Boletin-30abril{year}.pdf"
+    url_date = f"{year}/0{month}/Boletin-0{day}{monthWord}{year}.pdf"
 
 
     url = url_base + url_date

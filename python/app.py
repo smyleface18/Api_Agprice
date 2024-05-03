@@ -34,6 +34,9 @@ async def price():
     return productos();
 
 
+
+
+
 if( not(date()[4] == "Sabado" or date()[4] == "Domingo")):
     scheduler.start(); 
 
@@ -48,7 +51,7 @@ def productos():
     with open("python\h.txt", "r+") as linea:
         for a in linea:
             arrayWords = a.split();
-            if(len(arrayWords) >= 1):
+            if(len(arrayWords) >= 2):
                 if(value):
                     if("CABEZONA" == arrayWords[1]):
                         print("7////////////////"+arrayWords[1])
