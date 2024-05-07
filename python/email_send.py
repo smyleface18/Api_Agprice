@@ -6,7 +6,7 @@ def alert_email():
 
     email_emisor ='cacosta@itilpn.edu.co';
     email_receptor ='ca30850@gmail.com';
-    email_password = 'pqgk vlzr tjxd cwdp';
+    email_password = 'quga avee ajor eprs';
 
     asunto = 'POR FAVOR REVISAR LA API, HUBO UN PROBLEMA';
     cuerpo = ' ';
@@ -23,3 +23,4 @@ def alert_email():
     with smtplib.SMTP_SSL("smtp.gmail.com",465, context = contexto) as smtp:
         smtp.login(email_emisor,email_password);
         smtp.sendmail(email_emisor,email_receptor, em.as_string())
+

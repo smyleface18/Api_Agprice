@@ -1,8 +1,12 @@
 from apscheduler.schedulers.background import BackgroundScheduler;
 from task import dowload_save;
 
-scheduler = BackgroundScheduler();
+
+
+cron_dowload_save = BackgroundScheduler();
+cron_save_price = BackgroundScheduler();
 
    
-scheduler.add_job(dowload_save, 'interval', seconds = 300)
+cron_dowload_save.add_job(dowload_save, 'interval', seconds = 120)
+
 
