@@ -10,3 +10,13 @@ cron_save_price = BackgroundScheduler();
 cron_dowload_save.add_job(dowload_save, 'interval', seconds = 120)
 
 
+s
+ss
+
+
+SystemError
+SystemError
+scheduler
+
+scheduler
+scheduler

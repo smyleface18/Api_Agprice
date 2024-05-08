@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .env
 /venv
 .venv/
@@ -6,3 +7,6 @@ _pycache_/
 include
 Scripts/
 pyvenv.cfg
+=======
+/python
+>>>>>>> 00fb3eb5efa00bc03afbc3a1affb30444ba279a7
