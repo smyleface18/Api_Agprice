@@ -42,7 +42,7 @@ def price():
 @app.get("/historical/prices")
 
 def historicalprices():
-    save_price(date);
+    #save_price(date);
     file = open("python/historical_prices.json","r")
     
     return  json.loads(file.read());
@@ -70,13 +70,12 @@ def productos(date):
             if(len(arrayWords) >= 2):
                 if(value):
                     if("CABEZONA" == arrayWords[1]):
-                        print("7////////////////"+arrayWords[1])
+
                         if("ROJA"  == arrayWords[2]):
                             cebolla = arrayWords[0]+" "+arrayWords[1]+" "+arrayWords[2]+" "+arrayWords[8];
                             cebolla = cebolla.split("$");
                             cebolla[1] = float(cebolla[1]);
-                            print("7////////////////"+arrayWords[1])
-                            print(cebolla)
+
 
                         
                 if("CEBOLLA" == arrayWords[0]):
@@ -136,6 +135,8 @@ def save_price(date):
     
     array_words = [];
     
+    # los dos primero with es para eliminar el ] en el archivo json para poder concaternar el nuevo objeto json
+    
     with open("python/historical_prices.json","r+",encoding="utf-8") as historical_prices:
         for linea in historical_prices:
             array_words.append(linea);
@@ -145,7 +146,7 @@ def save_price(date):
     print(text)     
 
     with open("python/historical_prices.json","w") as historical_prices:
-        historical_prices.write(json.loads(json.dumps(text)))
+        historical_prices.write(text)
 
 
     with open("python/historical_prices.json","a") as historical_prices:
