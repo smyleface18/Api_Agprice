@@ -3,20 +3,11 @@ from task import dowload_save;
 
 
 
+
 cron_dowload_save = BackgroundScheduler();
 cron_save_price = BackgroundScheduler();
 
    
-cron_dowload_save.add_job(dowload_save, 'interval', seconds = 120)
+cron_dowload_save.add_job(dowload_save, 'interval', seconds = 300000)
 
 
-s
-ss
-
-
-SystemError
-SystemError
-scheduler
-
-scheduler
-scheduler
