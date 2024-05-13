@@ -115,8 +115,10 @@ def extrac():
 
 
 
-def save_price(date):
+def save_price():
     
+    date = date_current();
+    products = productos(date);
     array_words = [];
     
     # los dos primero with es para eliminar el ] en el archivo json para poder concaternar el nuevo objeto json
@@ -134,9 +136,11 @@ def save_price(date):
 
 
     with open("python/historical_prices.json","a") as historical_prices:
-            data = json.dumps(productos(date), indent=4)
+            data = json.dumps(products, indent=4)
             historical_prices.write(","+"\n"+data+"\n"+"]")
      
+
+
 
 
 def alert_price():
