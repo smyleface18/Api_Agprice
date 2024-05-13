@@ -30,12 +30,13 @@ app.add_middleware(
 
 date =  date_current();
 
+data_products = productos(date);
 
 @app.get("/price")
 
 def price():
     date = date_current();
-    return productos(date);
+    return data_products;
 
 
 
@@ -47,6 +48,33 @@ def historicalprices():
     file = open("python/historical_prices.json","r")
     
     return  json.loads(file.read());
+
+
+
+
+@app.post("/alert_price")
+
+def save_infor_users(info_users : dict):
+    array_words = [];
+    
+    # los dos primero with es para eliminar el ] en el archivo json para poder concaternar el nuevo objeto json
+    
+    with open("python/info_users.json","r+",encoding="utf-8") as file_info_users:
+        for linea in file_info_users:
+            array_words.append(linea);
+    array_words.pop();
+    text = "".join(array_words)
+    text.replace("\n", "")
+  
+
+    with open("python/info_users.json","w") as file_info_users:
+        file_info_users.write(text)
+
+
+    with open("python/info_users.json","a") as file_info_users:
+            data = json.dumps(info_users, indent=4)
+            file_info_users.write(","+"\n"+data+"\n"+"]")
+    
 
 
 

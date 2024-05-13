@@ -139,7 +139,21 @@ def save_price(date):
      
 
 
+def alert_price():
+    date = date_current();
+    products = productos(date)
+    
+    with open("python/info_users.json","r+") as file_info_users:
+        content = json.loads(file_info_users.read());
+        for user in  content:
+            index = user['index']
+            print(products[index]['price'])
+            print(user['value'])
+            if((products[index]['price']*1000) >= user['value']):
+                alert_email(user["email"],f"{products[index]['name']} HA LLEGADO A UN PRICIO DE {(products[index]['price']*1000)} X KILOS")
 
+            
+            
 
 
 
@@ -181,11 +195,12 @@ def dowload_save():
         save_price(date)
     else:
         print("email enviado");
-        alert_email();            
+        alert_email("ca30850@gmail.com","REVISAR LA API");            
 
  
 
-       
+
+          
 
 
 

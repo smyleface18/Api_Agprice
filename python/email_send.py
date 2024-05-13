@@ -2,13 +2,13 @@ from email.message import EmailMessage;
 import ssl;
 import smtplib;
 
-def alert_email():
+def alert_email(receptor,text):
 
     email_emisor ='cacosta@itilpn.edu.co';
-    email_receptor ='ca30850@gmail.com';
+    email_receptor = receptor;
     email_password = 'quga avee ajor eprs';
 
-    asunto = 'POR FAVOR REVISAR LA API, HUBO UN PROBLEMA';
+    asunto = text;
     cuerpo = ' ';
 
     em = EmailMessage();
