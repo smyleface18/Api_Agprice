@@ -3,7 +3,6 @@ from fastapi.middleware.cors import CORSMiddleware;
 from typing import Union;
 from PyPDF2 import PdfReader;
 from cron_job import cron_dowload_save;
-from cron_job import cron_save_price;
 from task import date_current;
 from task import productos;
 import json;
